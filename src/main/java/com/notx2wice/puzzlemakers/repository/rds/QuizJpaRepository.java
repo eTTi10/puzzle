@@ -1,6 +1,6 @@
-package com.notx2wice.puzzlemakers.repository;
+package com.notx2wice.puzzlemakers.repository.rds;
 
-import com.notx2wice.puzzlemakers.repository.data.Quiz;
+import com.notx2wice.puzzlemakers.repository.rds.data.Quiz;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

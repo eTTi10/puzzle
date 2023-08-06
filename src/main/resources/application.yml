@@ -22,3 +22,12 @@ spring:
       settings:
         trace: false
         web-allow-others: true
+
+aws:
+  region: ap-northeast-2
+
+
+cloud:
+  aws:
+    credentials:
+      instanceProfile: true

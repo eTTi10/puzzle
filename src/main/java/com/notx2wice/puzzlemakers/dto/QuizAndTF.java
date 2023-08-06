@@ -1,6 +1,6 @@
 package com.notx2wice.puzzlemakers.dto;
 
-import com.notx2wice.puzzlemakers.repository.data.Quiz;
+import com.notx2wice.puzzlemakers.repository.rds.data.Quiz;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

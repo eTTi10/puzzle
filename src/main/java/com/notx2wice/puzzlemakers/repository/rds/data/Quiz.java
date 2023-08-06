@@ -1,4 +1,4 @@
-package com.notx2wice.puzzlemakers.repository.data;
+package com.notx2wice.puzzlemakers.repository.rds.data;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,4 +26,6 @@ public class Quiz {
     @Column
     String category; // serial 1, mensa 2, math 3, unique-think 4  todo Enum으로 전환
 
+    @Column
+    String hint;
 }
