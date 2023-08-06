@@ -47,5 +47,5 @@ public class QuizController {
     public QuizAndTF canIsolve(@RequestParam(value = "id") String googleId , @RequestParam(value ="quiz_id") String quizId) {
         return quizService.goQuiz(googleId, quizId);
     }
-
+//변경
 }
