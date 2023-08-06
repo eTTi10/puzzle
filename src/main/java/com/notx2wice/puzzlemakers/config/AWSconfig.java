@@ -12,20 +12,9 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableDynamoDBRepositories(basePackages = "com.notx2wice.puzzlemakers.repository.dynamo")
 public class AWSconfig {
-    @Value("${aws.accessKey}")
-    private String awsAccessKey;
-    @Value("${aws.secretKey}")
-    private String awsSecretKey;
+
     @Value("${aws.region}")
     private String awsRegion;
-
-    public AWSCredentials amazonAWSCredentials() {
-        return new BasicAWSCredentials(awsAccessKey, awsSecretKey);
-    }
-
-    public AWSCredentialsProvider amazonAWSCredentialsProvider() {
-        return new AWSStaticCredentialsProvider(amazonAWSCredentials());
-    }
 
     @Bean
     public AmazonDynamoDB amazonDynamoDB() {
