@@ -1,6 +1,5 @@
 package com.notx2wice.puzzlemakers.service;
 
-import com.amazonaws.services.dynamodbv2.xspec.S;
 import com.notx2wice.puzzlemakers.dto.QuizAndTF;
 import com.notx2wice.puzzlemakers.dto.QuizDto;
 import com.notx2wice.puzzlemakers.repository.dynamo.PuzzlerRepositoryInterface;
@@ -19,6 +18,14 @@ import org.springframework.stereotype.Service;
 public class QuizService {
     final private QuizJpaRepository quizeRepository;
     final private PuzzlerRepositoryInterface puzzlerRepository;
+
+    public Puzzler getUser(String googleId) {
+        Optional<Puzzler> byGoogleId = puzzlerRepository.findByGoogleId(googleId);
+        if(byGoogleId.isEmpty()) {
+            return null;
+        }
+        return byGoogleId.get();
+    }
 
     public List<QuizDto> getQuizsAndIsSolved(String googleId) {
         System.out.println("googleId = " + googleId);
@@ -128,4 +135,19 @@ public class QuizService {
     }
 
 
+    @Transactional
+    public String noAd(String googleId) {
+        Optional<Puzzler> byGoogleId = puzzlerRepository.findByGoogleId(googleId);
+        if(byGoogleId.isEmpty()) {
+            return "no user";
+        }
+        Puzzler puzzler = byGoogleId.get();
+
+        if(puzzler.isAdFree()) {
+            return "already ad free";
+        }
+        puzzler.setAdFree(true);
+        puzzlerRepository.save(puzzler);
+        return "success";
+    }
 }
